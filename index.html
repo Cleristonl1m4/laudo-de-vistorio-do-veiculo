@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laudo de Vistoria de Veículo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+    <style>
+        body {
+            background-image: url(img/apis.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="img/logo_transparente.png" alt="Logo da empresa" class="logo">
+        <h1>Laudo de Vistoria de Veículo - Entrega</h1>
+    </header>
+
+    <main>
+        <form>
+            <!-- Seção: Características do Veículo -->
+            <section class="form-section">
+                <h2>Identificação do Condutor e Veículo</h2>
+                <div class="form-group">
+                    <label for="condutor">Nome do Condutor:</label>
+                    <input type="text" id="condutor" name="condutor" required>
+                </div>
+                <div class="form-group">
+                    <label for="placa">Placa:</label>
+                    <input type="text" id="placa" name="placa" required>
+                </div>
+            </section>
+
+            <!-- Seção: Entrega -->
+            <section class="form-section">
+                <h2>Entrega</h2>
+                <div class="form-group">
+                    <label for="data_entrega">Data:</label>
+                    <input type="date" id="data_entrega" name="data_entrega" required>
+                </div>
+                <div class="form-group">
+                    <label for="hora_saida_entrega">Hora de Saída:</label>
+                    <input type="time" id="hora_saida_entrega" name="hora_saida_entrega" required>
+                </div>
+                <div class="form-group">
+                    <label for="km_entrega">Quilometragem:</label>
+                    <input type="number" id="km_entrega" name="km_entrega" required>
+                </div>
+                <div class="form-group">
+                    <label for="combustivel_entrega">Combustível:</label>
+                    <select id="combustivel_entrega" name="combustivel_entrega" required>
+                        <option value="Gasolina">Gasolina</option>
+                        <option value="Álcool">Álcool</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Flex">Flex</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Seção: Danos no Carroceu -->
+            <section class="form-section">
+                <h2>Marcar Danos no Carro</h2>
+                <div class="image-container">
+                    <img src="img/baixados.jfif" name="carro" alt="Carroceu" id="carroceuImage">
+                    <!-- Marcadores serão adicionados dinamicamente aqui -->
+                </div>
+                <p>Imagem utilizada apenas para fins ilustrativos.</p>
+                <div class="controls">
+                    <button type="button" onclick="setMarkerType('X')">Arranhado (X)</button>
+                    <button type="button" onclick="setMarkerType('O')">Amassado (O)</button>
+                    <button type="button" onclick="setMarkerType('A')">Quebrado (A)</button>
+                </div>
+            </section>
+
+            <!-- Seção: Medição de Combustível -->
+            <section class="form-section">
+                <h2>Medição de Combustível</h2>
+                <table class="fuel-table">
+                    <thead>
+                        <tr>
+                            <th>Combustível na Retirada do Veículo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="fuel-gauge" id="fuel-pickup"></div>
+                                <label for="fuel_level_pickup" class="fuel-label">Nível na Retirada:</label>
+                                <select class="fuel-select" id="fuel_level_pickup" name="fuel_level_pickup" onchange="updateFuelGauge('fuel-pickup', this.value)" required>
+                                    <option value="empty">Vazio (0%)</option>
+                                    <option value="quarter">1/4 (25%)</option>
+                                    <option value="half">1/2 (50%)</option>
+                                    <option value="three-quarters">3/4 (75%)</option>
+                                    <option value="full">Cheio (100%)</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Seção: Equipamentos e Condições Mecânicas -->
+            <section class="form-section" id="minimalista">
+                <h2>Equipamentos e Condições Mecânicas</h2>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="documentos">DOCUMENTOS</label>
+                    <label><input type="checkbox" name="radio">RÁDIO</label>
+                    <label><input type="checkbox" name="extintor">EXTINTOR</label>
+                    <label><input type="checkbox" name="chaves">CHAVES/FECHADURAS</label>
+                    <label><input type="checkbox" name="luz_painel">LUZ PAINEL</label>
+                    <label><input type="checkbox" name="luz_interna">LUZ INTERNA</label>
+                    <label><input type="checkbox" name="tapetes">TAPETES</label>
+                    <label><input type="checkbox" name="cinto">CINTO DE SEGURANÇA</label>
+                    <label><input type="checkbox" name="esp_retrovisor">ESP. RETROVISOR</label>
+                    <label><input type="checkbox" name="triangulo">TRIÂNGULO</label>
+                    <label><input type="checkbox" name="chaves_roda">CHAVES DE RODA</label>
+                    <label><input type="checkbox" name="pneu_estepe">MACACO</label>
+                    <label><input type="checkbox" name="bateria">BATERIA</label>
+                    <label><input type="checkbox" name="nivel_oleo_motor">NÍVEL ÓLEO MOTOR</label>
+                    <label><input type="checkbox" name="nivel_oleo_freio">NÍVEL ÓLEO FREIO</label>
+                    <label><input type="checkbox" name="motor">MOTOR</label>
+                    <label><input type="checkbox" name="pneus_dianteiros">PNEUS DIANTEIROS</label>
+                    <label><input type="checkbox" name="pneus_traseiros">PNEUS TRASEIROS</label>
+                    <label><input type="checkbox" name="luz_traseira">LUZ TRASEIRA</label>
+                    <label><input type="checkbox" name="farol_alto_baixo">FAROL ALTO/BAIXO</label>
+                    <label><input type="checkbox" name="luz_freio_pisca">LUZ FREIO/PISCA</label>
+                    <label><input type="checkbox" name="luz_placa">LUZ PLACA</label>
+                </div>
+            </section>
+
+            <!-- Seção: Observações Gerais -->
+            <section class="form-section">
+                <h2>Observações Gerais</h2>
+                <div class="form-group">
+                    <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+                </div>
+            </section>
+
+            <!-- Botões de Ação -->
+            <div class="container">
+                <button id="assinarBtn" class="btn-assinar" type="button" onclick="assinar()">Assinar Agora</button>
+                <button type="submit">Enviar</button>
+                <button id="proximo" type="button" onclick="nextPage()">Próximo</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

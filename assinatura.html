@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Laudo de Vistoria de Veículo - Entrega</title>
+    <style>
+        body {
+            background-image: url(img/apis.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 20px;
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="file"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group input[type="file"] {
+            padding: 5px;
+        }
+
+        #preview-foto {
+            margin-top: 10px;
+        }
+
+        #preview-foto img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Assinatura - Condutor</h1>
+    <form>
+        <div class="form-section">
+            <h3>Identificação do Colaborador</h3>
+            <div class="form-group">
+                <label>CPF/CNPJ do Motorista:</label>
+                <input type="text" name="ra_motorista" pattern="[0-9]*" required>
+            </div>
+            <div class="form-group">
+                <label>Nome Completo:</label>
+                <input type="text" name="nome_completo" required>
+            </div>
+            <div class="form-group">
+                <label>Setor:</label>
+                <select name="setor" required>
+                    <option value="">Selecione o setor</option>
+                    <option value="logistica">Logística</option>
+                    <option value="comercial">Comercial</option>
+                    <option value="administrativo">Administrativo</option>
+                    <option value="manutencao">Manutenção</option>
+                    <option value="operacional">peracional</option>
+                </select>
+            </div>
+        </div>
+        <canvas id="signature-pad" width="400" height="200" style="border: 1px solid black;"></canvas>
+        <br>
+        <button id="clear" class="botao-direito">Limpar</button>
+        <button type="submit">Enviar</button>
+        <button class="botao-direito" type="button" onclick="backPage()">Voltar</button>
+    </form>
+
+    <script>
+        const canvas = document.getElementById('signature-pad');
+        const signaturePad = new SignaturePad(canvas);
+        
+        document.getElementById('clear').addEventListener('click', () => {
+            signaturePad.clear(); // Limpa a assinatura
+        });
+        
+        document.getElementById('save').addEventListener('click', () => {
+            if (signaturePad.isEmpty()) {
+                alert('Por favor, forneça uma assinatura.');
+            } else {
+                const dataURL = signaturePad.toDataURL(); // Converte a assinatura para base64
+                console.log(dataURL); // Exibe a assinatura em formato de imagem
+                // Envie dataURL para o servidor ou salve localmente
+            }
+        });
+        
+        // Script para exibir a foto do motorista após o upload
+        document.getElementById('foto_motorista').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('preview-foto');
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.innerHTML = `<img src="${e.target.result}" alt="Foto do motorista">`;
+                };
+
+                reader.onerror = function (error) {
+                    console.error('Erro ao ler o arquivo:', error);
+                    preview.innerHTML = 'Erro ao carregar a imagem.';
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                preview.innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
+
+    <!-- Resto do formulário continua igual -->

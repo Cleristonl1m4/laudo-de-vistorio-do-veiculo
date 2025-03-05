@@ -1,0 +1,370 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-image: url(img/apis.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    color: black;
+}
+h1, h3 {
+    color: #2c3e50;
+    margin: 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+    text-align: center;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    margin-bottom: 30px;
+}
+
+h3 {
+    border-bottom: 1px solid #bdc3c7;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.form-section, .fuel-table {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group, .checkbox-group {
+    margin-bottom: 15px;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(2, 179, 233, 0.3);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box;
+    --background-color: #ffffff;
+    --checkbox-height: 25px;
+}
+
+img {
+    max-width: 200px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.fuel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.fuel-table th,
+.fuel-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.fuel-table th {
+    background-color: #f5f9ff;
+    font-weight: bold;
+}
+
+.fuel-gauge {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border: 2px solid #3498db;
+    border-radius: 50%;
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+}
+
+.fuel-gauge::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #3498db;
+    transition: height 0.3s ease;
+}
+
+.fuel-gauge.empty::before {
+    height: 0%;
+    background: #e74c3c;
+}
+
+.fuel-gauge.quarter::before {
+    height: 25%;
+    background: #f39c12;
+}
+
+.fuel-gauge.half::before {
+    height: 50%;
+    background: #f1c40f;
+}
+
+.fuel-gauge.three-quarters::before {
+    height: 75%;
+    background: #2ecc71;
+}
+
+.fuel-gauge.full::before {
+    height: 100%;
+    background: #27ae60;
+}
+
+.fuel-select {
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 200px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.fuel-select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.fuel-select:hover {
+    border-color: #3498db;
+}
+
+.fuel-label {
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .fuel-table {
+        font-size: 14px;
+    }
+    
+    .fuel-table th,
+    .fuel-table td {
+        padding: 8px;
+    }
+    
+    .fuel-gauge {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .fuel-select {
+        font-size: 12px;
+    }
+
+
+}
+
+button, #proximo, .botao-direito {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 8px;
+}
+
+.btn-assinar {
+    background: linear-gradient(45deg, #2563eb, #3b82f6);
+    color: white;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+}
+
+.btn-assinar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(37, 99, 235, 0.3);
+}
+
+button[type="submit"] {
+    background-color: #35c040;
+    color: white;
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+}
+
+button[type="submit"]:hover {
+    background-color: #059669;
+    box-shadow: 0 6px 8px rgba(16, 185, 129, 0.3);
+}
+
+#proximo {
+    background-color: #3882fa;
+    color: white;
+    box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
+}
+
+#proximo:hover {
+    background-color: blue;
+    box-shadow: 0 6px 8px rgba(99, 102, 241, 0.3);
+}
+
+.botao-direito {
+    background-color: #3882fa;
+    color: white;
+    box-shadow: 0 4px 6px rgba(156, 163, 175, 0.2);
+}
+
+.botao-direito:hover {
+    background-color: blue;
+    box-shadow: 0 6px 8px rgba(156, 163, 175, 0.3);
+}
+
+.container {
+    margin: 20px 0;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.preview-image {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8f8;
+}
+
+.preview-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+input[type="file"] {
+    margin: 10px 0;
+}
+
+select[name="setor"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    margin: 20px auto;
+    text-align: center;
+}
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
+.controls {
+    text-align: center;
+    margin-top: 20px;
+}
+.controls button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+.controls button:hover {
+    background-color: #0056b3;
+}
+.marker {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.foto-danos {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #f1f1f1;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s;
+}

@@ -1,0 +1,331 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        color: black;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+}
+
+/* Header styles */
+h1 {
+    color:rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+}
+
+h3 {
+    color: #2c3e50;
+    margin: 20px 0 15px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #bdc3c7;
+}
+
+/* Form section styles */
+.form-section {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form group styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+
+/* Input styles */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(2, 179, 233, 0.3);
+}
+
+/* Checkbox group styles */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+    
+
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box;
+    --background-color: #ffffff;
+    --checkbox-height: 25px;
+}
+
+
+/* Logo styles */
+img {
+    max-width: 200px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.form-section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Estilos da Tabela de Combustível */
+.fuel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: #fff;
+}
+
+.fuel-table th,
+.fuel-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.fuel-table th {
+    background-color: #f5f9ff;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.fuel-table td {
+    position: relative;
+}
+
+/* Estilo do Medidor de Combustível */
+.fuel-gauge {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border: 2px solid #3498db;
+    border-radius: 50%;
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+}
+
+.fuel-gauge::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #3498db;
+    transition: height 0.3s ease;
+}
+
+/* Estados do Medidor */
+.fuel-gauge.empty::before {
+    height: 0%;
+    background: #e74c3c;
+}
+
+.fuel-gauge.quarter::before {
+    height: 25%;
+    background: #f39c12;
+}
+
+.fuel-gauge.half::before {
+    height: 50%;
+    background: #f1c40f;
+}
+
+.fuel-gauge.three-quarters::before {
+    height: 75%;
+    background: #2ecc71;
+}
+
+.fuel-gauge.full::before {
+    height: 100%;
+    background: #27ae60;
+}
+
+/* Estilo do Select */
+.fuel-select {
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 200px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.fuel-select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.fuel-select:hover {
+    border-color: #3498db;
+}
+
+/* Estilo da Label */
+.fuel-label {
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .fuel-table {
+        font-size: 14px;
+    }
+    
+    .fuel-table th,
+    .fuel-table td {
+        padding: 8px;
+    }
+    
+    .fuel-gauge {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .fuel-select {
+        font-size: 12px;
+    }
+}
+
+#proximo, .botao-direito {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Espaço entre os botões */
+}
+
+#proximo {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+/* Estilos base para todos os botões */
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 8px;
+}
+
+/* Estilo específico para o botão Assinar */
+.btn-assinar {
+    background: linear-gradient(45deg, #2563eb, #3b82f6);
+    color: white;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+}
+
+.btn-assinar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Estilo para o botão Enviar */
+button[type="submit"] {
+    background-color: #10b981;
+    color: white;
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+}
+
+button[type="submit"]:hover {
+    background-color: #059669;
+    box-shadow: 0 6px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Estilo para o botão Próximo */
+#proximo {
+    background-color: #6366f1;
+    color: white;
+    box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
+}
+
+#proximo:hover {
+    background-color: #4f46e5;
+    box-shadow: 0 6px 8px rgba(99, 102, 241, 0.3);
+}
+
+/* Estilo para o botão Voltar */
+.botao-direito {
+    background-color: #9ca3af;
+    color: white;
+    box-shadow: 0 4px 6px rgba(156, 163, 175, 0.2);
+}
+
+.botao-direito:hover {
+    background-color: #6b7280;
+    box-shadow: 0 6px 8px rgba(156, 163, 175, 0.3);
+}
+
+/* Estilo do container */
+.container {
+    margin: 20px 0;
+}
+
+/* Estilos para botões desabilitados */
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
